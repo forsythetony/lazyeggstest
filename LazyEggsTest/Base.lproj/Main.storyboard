@@ -110,7 +110,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="didTapNoHackTime" destination="D2z-BB-2rN" id="8Pl-mq-dGv"/>
                         <outlet property="mainTextView" destination="lk8-je-o12" id="9nH-bk-WVt"/>
                     </connections>
                 </viewController>
