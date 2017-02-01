@@ -60,7 +60,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 
             })
             
-            //Segue Here
+            self.performSegue(withIdentifier: Constants.Segues.SignInToHome, sender: nil)
             
             
         }
