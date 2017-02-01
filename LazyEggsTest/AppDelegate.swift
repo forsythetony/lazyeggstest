@@ -13,6 +13,10 @@ import FirebaseDatabase
 import GoogleSignIn
 
 @UIApplicationMain
+
+/*
+    ANTHONY FORSYTHE BIZNATCH
+ */
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
