@@ -17,7 +17,7 @@ import GoogleSignIn
 /*
     ANTHONY FORSYTHE BIZNATCH
  */
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var databaseRef: FIRDatabaseReference!
@@ -27,65 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         //set up firebase and google auth
         FIRApp.configure()
-        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
         
         return true
     }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: sourceApplication,
-                                                 annotation: annotation)
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        
-        if let error = error {
-            print("error: " + error.localizedDescription)
-            return
-        }
-        print("User signed into Google\n")
-        
-        guard let authentication = user.authentication else { return }
-        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            
-            if let error = error {
-                print("error1234: " + error.localizedDescription)
-                return
-            }
-            
-            print("User signed into Firebase")
-            self.databaseRef = FIRDatabase.database().reference()
-            self.databaseRef.child("user_profiles").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                let snapshot = snapshot.value as? NSDictionary
-                if snapshot == nil{
-                    self.databaseRef.child("user_profiles").child("name").setValue(user?.displayName)
-                    self.databaseRef.child("user_profiles").child("email").setValue(user?.email)
-                }
-                
-                
-            })
-            
-            //Segue Here
-            
-            
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        
-    }
-    
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
-    }
-
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
