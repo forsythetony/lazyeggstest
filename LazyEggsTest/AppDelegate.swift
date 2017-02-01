@@ -66,8 +66,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     self.databaseRef.child("user_profiles").child("email").setValue(user?.email)
                 }
                 
-                //Segue Here
+                
             })
+            
+            //Segue Here
             
             
         }
