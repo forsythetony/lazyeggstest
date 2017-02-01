@@ -18,11 +18,17 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.checkUserStatus()
+        
         // Do any additional setup after loading the view, typically from a nib.
         GIDSignIn.sharedInstance().uiDelegate = self
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.checkUserStatus()
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,14 +39,18 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     func checkUserStatus(){
+        
         if FIRAuth.auth()?.currentUser != nil {
+            
             presentHome()
         } else {
+            
             //User Not logged in
         }
     }
     func presentHome(){
         
+        self.performSegue(withIdentifier: Constants.Segues.SignInToHome, sender: nil)
     }
 
 }
