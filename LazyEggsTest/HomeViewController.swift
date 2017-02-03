@@ -9,12 +9,27 @@
 import UIKit
 import Firebase
 
+//  Types of database calls
+enum DatabaseCall : String {
+    case PullFoodItems              = "Pull Food Items"
+    case PullUserSettings           = "Pull User Settings"
+    case PullRestaurantInformation  = "Pull Restaurant Information"
+}
+
+let databaseCalls = [
+    DatabaseCall.PullFoodItems,
+    DatabaseCall.PullUserSettings,
+    DatabaseCall.PullRestaurantInformation ]
+
+
 class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var databaseCallsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        _setup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,4 +46,40 @@ class HomeViewController: UIViewController {
     }
     */
 
+    
+    
+    
+    
+    //  MARK: Setup Functions
+    func _setup() {
+        _setupTableView()
+    }
+    
+    func _setupTableView() {
+        self.databaseCallsTableView.dataSource  = self
+        self.databaseCallsTableView.delegate    = self
+    }
+}
+
+
+
+
+extension HomeViewController : UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return databaseCalls.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = databaseCalls[indexPath.row].rawValue
+        
+        return cell
+    }
 }
