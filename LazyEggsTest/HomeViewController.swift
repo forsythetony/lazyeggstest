@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var databaseCallsTableView: UITableView!
     
+    let dataMan : LEDataManager = LEDataManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,17 +49,22 @@ class HomeViewController: UIViewController {
     */
 
     
-    
-    
-    
     //  MARK: Setup Functions
     func _setup() {
         _setupTableView()
+        _setupSingletons()
     }
     
     func _setupTableView() {
         self.databaseCallsTableView.dataSource  = self
         self.databaseCallsTableView.delegate    = self
+    }
+    
+    func _setupSingletons() {
+        
+        self.dataMan.delegate = self
+        
+        self.dataMan.connect()
     }
 }
 
@@ -81,5 +88,18 @@ extension HomeViewController : UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = databaseCalls[indexPath.row].rawValue
         
         return cell
+    }
+}
+
+
+extension HomeViewController : LEDataManagerDelegate {
+    
+    func LEDataManagerDidPullFoodItem(foodItem: LEFoodItem) {
+        
+        
+    }
+    
+    func LEDataManagerDidConnect() {
+        self.dataMan.pullAllFoodItems()
     }
 }
