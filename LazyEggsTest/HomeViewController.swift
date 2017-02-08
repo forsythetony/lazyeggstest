@@ -96,6 +96,7 @@ extension HomeViewController : LEDataManagerDelegate {
     
     func LEDataManagerDidPullFoodItem(foodItem: LEFoodItem) {
         
+        print( foodItem.description )
         
     }
     

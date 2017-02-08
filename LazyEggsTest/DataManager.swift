@@ -35,9 +35,9 @@ public class LEDataManager {
             
             if FIRAuth.auth()?.currentUser != nil {
                 self.isConnected = true
+                self.databaseRef = FIRDatabase.database().reference()
                 self.delegate?.LEDataManagerDidConnect()
                 self.connectionTimer?.invalidate()
-                self.databaseRef = FIRDatabase.database().reference()
             }
         })
     }
@@ -48,7 +48,12 @@ public class LEDataManager {
         
         self.databaseRef.child("food_items").observe(.childAdded, with: { (snapshot) in
                 
-          
+            if let newFoodItem = LEFoodItem.buildWithSnapshot(snapshot: snapshot) {
+                self.delegate?.LEDataManagerDidPullFoodItem(foodItem: newFoodItem)
+            }
+            else {
+                print( "There was an error building the food item" )
+            }
             
         })
     }
