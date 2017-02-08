@@ -11,10 +11,6 @@ import Firebase
 import FirebaseAuth
 import UIKit
 
-class LEFoodItem {
-
-}
-
 protocol LEDataManagerDelegate {
     func LEDataManagerDidConnect()
     func LEDataManagerDidPullFoodItem( foodItem : LEFoodItem )
@@ -50,6 +46,10 @@ public class LEDataManager {
         
         if self.isConnected == false { return }
         
-        
+        self.databaseRef.child("food_items").observe(.childAdded, with: { (snapshot) in
+            
+          
+            
+        })
     }
 }

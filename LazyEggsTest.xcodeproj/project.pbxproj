@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2575327F1E4ACFEC008EFEF7 /* LEFoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2575327E1E4ACFEC008EFEF7 /* LEFoodItem.swift */; };
 		257C5C391E4185AA00239EAA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257C5C381E4185AA00239EAA /* Constants.swift */; };
 		257C5C3B1E4185F100239EAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257C5C3A1E4185F100239EAA /* HomeViewController.swift */; };
 		4F2E8C8B1E4AC5B000C2BA95 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E8C8A1E4AC5B000C2BA95 /* DataManager.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2575327E1E4ACFEC008EFEF7 /* LEFoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEFoodItem.swift; sourceTree = "<group>"; };
 		257C5C381E4185AA00239EAA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		257C5C3A1E4185F100239EAA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F2E8C8A1E4AC5B000C2BA95 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				257C5C381E4185AA00239EAA /* Constants.swift */,
 				257C5C3A1E4185F100239EAA /* HomeViewController.swift */,
 				4F2E8C8C1E4AC5B700C2BA95 /* Singletons */,
+				2575327E1E4ACFEC008EFEF7 /* LEFoodItem.swift */,
 			);
 			path = LazyEggsTest;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				4FFF78151E416E6D0041383F /* ViewController.swift in Sources */,
 				4FFF78131E416E6D0041383F /* AppDelegate.swift in Sources */,
 				4FB9B8A41E417385004E1EA3 /* LineButton.swift in Sources */,
+				2575327F1E4ACFEC008EFEF7 /* LEFoodItem.swift in Sources */,
 				257C5C391E4185AA00239EAA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

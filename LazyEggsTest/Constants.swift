@@ -16,4 +16,14 @@ struct Constants {
     struct StoryboardIDs {
         static let SignInViewController = "signinviewcontroller"
     }
+    
+}
+
+struct Keys {
+    struct FoodItem {
+        static let basePrice    = "base_price"
+        static let description  = "description"
+        static let name         = "name"
+        static let uuid         = "uuid"
+    }
 }
