@@ -36,13 +36,24 @@ extension LEFoodItem {
         else {
             return nil
         }
-        
-        
-        
-        
-        
-        
-        
+        if let name = snapData[Keys.FoodItem.name] as? String {
+            retValue.name = name
+        }
+        else {
+            return nil
+        }
+        if let desc = snapData[Keys.FoodItem.description] as? String {
+            retValue.description = desc
+        }
+        else {
+            return nil
+        }
+        if let basePrice = snapData[Keys.FoodItem.basePrice] as? Double {
+            retValue.basePrice = basePrice
+        }
+        else {
+            return nil
+        }
         
         return retValue
     }

@@ -47,7 +47,7 @@ public class LEDataManager {
         if self.isConnected == false { return }
         
         self.databaseRef.child("food_items").observe(.childAdded, with: { (snapshot) in
-            
+                
           
             
         })
